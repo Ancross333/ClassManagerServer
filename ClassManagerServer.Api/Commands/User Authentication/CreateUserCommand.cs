@@ -15,8 +15,6 @@ namespace ClassManagerServer.Api.Commands.User_Authentication
         [DataMember]
         public string LastName { get; init; }
 
-        public CreateUserCommand() { }
-
         public CreateUserCommand(string email, string password, string firstName, string lastName)
         {
             Email = email;

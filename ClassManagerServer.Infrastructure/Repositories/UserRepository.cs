@@ -23,9 +23,9 @@ namespace ClassManagerServer.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddUser(string email, string password, string firstName, string lastName, UserType userType)
+        public async Task AddUser(User user)
         {
-            await _context.AddAsync(new User(email, password, firstName, lastName, userType));
+            await _context.AddAsync(user);
         }
     }
 }

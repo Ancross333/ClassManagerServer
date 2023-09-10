@@ -18,17 +18,18 @@ namespace ClassManagerServer.Api.Commands.User_Authentication
         [DataMember]
         public UserType UserType { get; init; }
 
-        public CreateUserCommand(string email, string password, string firstName, string lastName)
+        public CreateUserCommand(string email, string password, string firstName, string lastName, UserType userType)
         {
             Email = email;
             Password = password;
             FirstName = firstName;
             LastName = lastName;
+            UserType = userType;
         }
     }
 
     public record UserAuthenticationDto
     {
-
+        public int UserId { get; init; }
     }
 }

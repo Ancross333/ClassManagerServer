@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassManagerServer.Api", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassManagerServer.Domain", "ClassManagerServer.Domain\ClassManagerServer.Domain.csproj", "{0B517A6F-8F0F-4960-9365-B5A1252DC7E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassManagerServer.Db", "ClassManagerServer.Db\ClassManagerServer.Db.csproj", "{A6CB2C7D-8786-4F69-B3E9-66729EE9F720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassManagerServer.Db", "ClassManagerServer.Db\ClassManagerServer.Db.csproj", "{A6CB2C7D-8786-4F69-B3E9-66729EE9F720}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassManagerServer.Infrastructure", "ClassManagerServer.Infrastructure\ClassManagerServer.Infrastructure.csproj", "{37F5BC83-64FF-40BA-9744-A896A5C2436C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassManagerServer.Infrastructure", "ClassManagerServer.Infrastructure\ClassManagerServer.Infrastructure.csproj", "{37F5BC83-64FF-40BA-9744-A896A5C2436C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AF481F95-399B-488B-8170-6883E2C33931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassManagerServer.Api.Tests", "ClassManagerServer.Api.Tests\ClassManagerServer.Api.Tests.csproj", "{5103203E-6497-43AE-BFB3-8A4E46978EBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,16 @@ Global
 		{37F5BC83-64FF-40BA-9744-A896A5C2436C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37F5BC83-64FF-40BA-9744-A896A5C2436C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37F5BC83-64FF-40BA-9744-A896A5C2436C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5103203E-6497-43AE-BFB3-8A4E46978EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5103203E-6497-43AE-BFB3-8A4E46978EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5103203E-6497-43AE-BFB3-8A4E46978EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5103203E-6497-43AE-BFB3-8A4E46978EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5103203E-6497-43AE-BFB3-8A4E46978EBC} = {AF481F95-399B-488B-8170-6883E2C33931}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA5E4E26-26A5-4984-8B98-B5F4311CB18A}

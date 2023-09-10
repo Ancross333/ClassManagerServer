@@ -30,7 +30,7 @@ namespace ClassManagerServer.Api.Controllers
         {
             _logger.LogInformation("Request to create user has been made.");
 
-            var cmd = new CreateUserCommand(request.Email, request.Password, request.FirstName, request.LastName);
+            var cmd = new CreateUserCommand(request.Email, request.Password, request.FirstName, request.LastName, request.UserType);
             var data = await _mediator.Send(cmd);
 
             return CreatedAtAction(nameof(CreateUser), data); // Assuming the command handler returns data with an Id property

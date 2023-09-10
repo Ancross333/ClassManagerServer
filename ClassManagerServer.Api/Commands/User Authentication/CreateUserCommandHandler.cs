@@ -1,5 +1,4 @@
-﻿using ClassManagerServer.Domain.Enums;
-using ClassManagerServer.Domain.UserAuthentication;
+﻿using ClassManagerServer.Domain.UserAuthentication;
 using MediatR;
 
 namespace ClassManagerServer.Api.Commands.User_Authentication
@@ -16,7 +15,7 @@ namespace ClassManagerServer.Api.Commands.User_Authentication
         }
         public Task<UserAuthenticationDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            if(request is null)
+            if (request is null)
             {
                 throw new ArgumentNullException(nameof(request));
             }
@@ -26,11 +25,15 @@ namespace ClassManagerServer.Api.Commands.User_Authentication
 
         public async Task<UserAuthenticationDto> HandleInternalAsync(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            await _userRepo.AddUser(request.Email, request.Password, request.FirstName, request.LastName, UserType.Student);
+            var user = new User(request.Email, request.Password, request.FirstName, request.LastName, request.UserType);
+
+            await _userRepo.AddUser(user);
             await _userRepo.SaveAsync();
 
-            _logger.LogInformation("Command Handler Hit");
-            return new UserAuthenticationDto();
+            return new UserAuthenticationDto()
+            {
+                UserId = user.UserId
+            };
         }
     }
 }

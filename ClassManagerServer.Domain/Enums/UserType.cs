@@ -12,6 +12,9 @@ namespace ClassManagerServer.Domain.Enums
         Professor,
         Administrator,
         DemoStudent,
-        DemoProfessor
+        DemoProfessor,
+        DemoAdministrator,
+        NotFound,
+        Unauthorized
     }
 }

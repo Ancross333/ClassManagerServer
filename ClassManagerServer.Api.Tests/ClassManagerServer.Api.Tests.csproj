@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ClassManagerServer.Api\ClassManagerServer.Api.csproj" />
   </ItemGroup>
 

@@ -6,5 +6,6 @@ namespace ClassManagerServer.Domain.UserAuthentication
     {
         public Task SaveAsync();
         public Task AddUser(User user);
+        public Task<User?> GetUser(string email, string password);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ClassManagerServer.Db;
-using ClassManagerServer.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
 using ClassManagerServer.Domain.UserAuthentication;
+using ClassManagerServer.Domain.Enums;
 
 namespace ClassManagerServer.Infrastructure.Repositories
 {
@@ -23,9 +24,23 @@ namespace ClassManagerServer.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddUser(User user)
+        public async Task AddUser(User user) => await _context.AddAsync(user);
+
+        public async Task<User?> GetUser(string email, string password)
         {
-            await _context.AddAsync(user);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+            if(user == null)
+            {
+                return null;
+            }
+
+            if(user.Password != password)
+            {
+                return new User("", "", "", "", UserType.Unauthorized);
+            }
+
+            return user;
         }
     }
 }

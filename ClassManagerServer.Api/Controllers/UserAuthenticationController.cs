@@ -1,5 +1,6 @@
 ﻿using ClassManagerServer.Api.Commands.User_Authentication;
 using ClassManagerServer.Api.Requests;
+using ClassManagerServer.Domain.Enums;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,7 @@ namespace ClassManagerServer.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("Add")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
         {
             _logger.LogInformation("Request to create user has been made.");
@@ -33,7 +35,31 @@ namespace ClassManagerServer.Api.Controllers
             var cmd = new CreateUserCommand(request.Email, request.Password, request.FirstName, request.LastName, request.UserType);
             var data = await _mediator.Send(cmd);
 
-            return CreatedAtAction(nameof(CreateUser), data); // Assuming the command handler returns data with an Id property
+            _logger.LogInformation($"Created user with Id{data.UserId}");
+            return CreatedAtAction(nameof(CreateUser), data);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route("Get")]
+        public async Task<IActionResult> GetUser([FromBody] RetrieveUserRequest request)
+        {
+            var cmd = new RetrieveUserCommand(request.Email, request.Password);
+            var data = await _mediator.Send(cmd);
+
+            if(data.User.UserType == UserType.NotFound)
+            {
+                return NotFound();
+            }
+            
+            if(data.User.UserType == UserType.Unauthorized)
+            {
+                return Unauthorized();
+            }
+
+            return Ok(data);
         }
     }
 }

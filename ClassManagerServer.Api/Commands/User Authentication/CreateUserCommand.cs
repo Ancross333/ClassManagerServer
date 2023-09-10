@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using ClassManagerServer.Domain.Enums;
 using MediatR;
 
 namespace ClassManagerServer.Api.Commands.User_Authentication
@@ -14,8 +15,8 @@ namespace ClassManagerServer.Api.Commands.User_Authentication
         public string FirstName { get; init; }
         [DataMember]
         public string LastName { get; init; }
-
-        public CreateUserCommand() { }
+        [DataMember]
+        public UserType UserType { get; init; }
 
         public CreateUserCommand(string email, string password, string firstName, string lastName)
         {

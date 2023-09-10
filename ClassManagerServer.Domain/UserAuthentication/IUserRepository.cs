@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClassManagerServer.Db;
+﻿using ClassManagerServer.Domain.Enums;
 
 namespace ClassManagerServer.Domain.UserAuthentication
 {
     public interface IUserRepository
     {
-        private readonly ClassManagerDbContext _context;
+        public Task SaveAsync();
+        public Task AddUser(string email, string password, string firstName, string lastName, UserType userType);
     }
 }
